@@ -12,7 +12,8 @@
   "dependencies": {
     "express": "^4.17.0",
     "express-graphql": "^0.8.0",
-    "graphql": "^14.3.0"
+    "graphql": "^14.3.0",
+    "lodash": "^4.17.11"
   },
   "devDependencies": {
     "husky": "^2.3.0",
