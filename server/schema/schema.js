@@ -9,10 +9,10 @@ const {
 } = graphql;
 
 const books = [
-  { name: "Book1", genre: "A", id: "1" },
-  { name: "Book2", genre: "B", id: "2" },
-  { name: "Book3", genre: "C", id: "3" },
-  { name: "Book4", genre: "A", id: "4" }
+  { name: "Book1", genre: "A", id: "1", authorId: "1" },
+  { name: "Book2", genre: "B", id: "2", authorId: "3" },
+  { name: "Book3", genre: "C", id: "3", authorId: "1ß" },
+  { name: "Book4", genre: "A", id: "4", authorId: "2" }
 ];
 
 const authors = [
@@ -26,7 +26,13 @@ const BookType = new GraphQLObjectType({
   fields: () => ({
     id: { type: GraphQLID },
     name: { type: GraphQLString },
-    genre: { type: GraphQLString }
+    genre: { type: GraphQLString },
+    author: {
+      type: AuthorType,
+      resolve(parent, args) {
+        return _.find(authors, { id: parent.authorId });
+      }
+    }
   })
 });
 
