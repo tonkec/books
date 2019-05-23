@@ -8,19 +8,8 @@ const {
   GraphQLInt,
   GraphQLList
 } = graphql;
-
-const books = [
-  { name: "Book1", genre: "A", id: "1", authorId: "1" },
-  { name: "Book2", genre: "B", id: "2", authorId: "3" },
-  { name: "Book3", genre: "C", id: "3", authorId: "1" },
-  { name: "Book4", genre: "A", id: "4", authorId: "2" }
-];
-
-const authors = [
-  { name: "Virgina Woolf", age: 44, id: "1" },
-  { name: "Jane Austin", age: 44, id: "2" },
-  { name: "J.K.Rowling", age: 50, id: "3" }
-];
+const Book = require("../models/book");
+const Author = require("../models/author");
 
 const BookType = new GraphQLObjectType({
   name: "Book",
@@ -85,6 +74,28 @@ const RootQuery = new GraphQLObjectType({
   }
 });
 
+const Mutation = new GraphQLObjectType({
+  name: "Mutation",
+  fields: {
+    addAuthor: {
+      type: AuthorType,
+      args: {
+        name: { type: GraphQLString },
+        age: { type: GraphQLInt }
+      },
+      resolve(parent, args) {
+        let author = new Author({
+          name: args.name,
+          age: args.age
+        });
+
+        return author.save();
+      }
+    }
+  }
+});
+
 module.exports = new GraphQLSchema({
-  query: RootQuery
+  query: RootQuery,
+  mutation: Mutation
 });
