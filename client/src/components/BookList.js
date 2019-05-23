@@ -26,10 +26,10 @@ class BookList extends Component {
 
   render() {
     return (
-      <ul id="book-list">
-        {console.log(this.props)}
-        {this.showBooks()}
-      </ul>
+      <section>
+        <h1> List of your books </h1>
+        <ul id="book-list">{this.showBooks()}</ul>
+      </section>
     );
   }
 }
