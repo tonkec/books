@@ -5,6 +5,8 @@ const schema = require("./schema/schema");
 const mongoose = require("mongoose");
 dotenv.config();
 
+const cors = require("cors");
+
 const app = express();
 const user = process.env.USER;
 const password = process.env.PASSWORD;
@@ -12,6 +14,7 @@ const host = process.env.HOST;
 const port = process.env.PORT;
 const db = process.env.DB;
 
+app.use(cors());
 mongoose.connect(
   `mongodb://${user}:${password}@${host}.mlab.com:${port}/${db}`
 );
