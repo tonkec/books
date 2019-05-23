@@ -6,23 +6,36 @@ const AddBook = ({ data }) => {
   let { authors, loading } = data;
   return (
     <section>
-      <h2> Add New Book </h2>
+      <h2 className="title is-2"> Add New Book </h2>
       <form>
-        <label> Book Name </label>
-        <input type="text" />
+        <div className="field">
+          <label className="label"> Book Name </label>
+          <div className="control">
+            <input type="text" className="input" />
+          </div>
+        </div>
 
-        <label> Genre </label>
-        <input type="text" />
+        <div className="field">
+          <label className="label"> Genre </label>
+          <div className="control">
+            <input type="text" className="input" />
+          </div>
+        </div>
 
-        <label> Author </label>
-        {!loading && (
-          <select>
-            {authors.map(author => (
-              <option key={author.id}> {author.name} </option>
-            ))}
-          </select>
-        )}
-        <button> Add Book </button>
+        <div className="field">
+          <label className="label"> Author </label>
+          <div className="control select">
+            {!loading && (
+              <select>
+                {authors.map(author => (
+                  <option key={author.id}> {author.name} </option>
+                ))}
+              </select>
+            )}
+          </div>
+        </div>
+
+        <button className="button is-black"> Add Book </button>
       </form>
     </section>
   );

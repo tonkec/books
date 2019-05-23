@@ -7,13 +7,15 @@ const BookList = ({ data }) => {
 
   return (
     <section>
-      <h1> List of your books </h1>
+      <h1 className="title is-1"> List of your books </h1>
       {!loading && (
-        <ul id="book-list">
-          {books.map(book => (
-            <li key={book.id}> {book.name} </li>
-          ))}
-        </ul>
+        <div className="content">
+          <ul id="book-list">
+            {books.map(book => (
+              <li key={book.id}> {book.name} </li>
+            ))}
+          </ul>
+        </div>
       )}
     </section>
   );
