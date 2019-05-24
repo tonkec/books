@@ -13,13 +13,20 @@ class BookDetails extends React.Component {
             <div className="content">
               <h3 className="title is-3"> {book.name}</h3>
               <p>
-                {" "}
-                <b> Genre</b>: {book.genre}{" "}
+                <b> Genre</b>: {book.genre}
               </p>
               <p>
-                {" "}
-                <b> Author</b>: {book.author.name}{" "}
+                <b> Author</b>: {book.author.name}
               </p>
+              <p> All books from this author </p>
+              <ul>
+                {book.author.books.map(b => (
+                  <li key={b.id}>
+                    {" "}
+                    {b.name}: {b.genre}
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         )}
