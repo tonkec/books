@@ -1,12 +1,12 @@
 import React from "react";
 import { getAuthorsQuery, addBookMutation } from "./../queries/queries";
-import { graphql } from "react-apollo";
+import { graphql, compose } from "react-apollo";
 
 class AddBook extends React.Component {
   state = {
     name: "",
     genre: "",
-    author: ""
+    authorId: ""
   };
 
   handleBookName = e => {
@@ -20,16 +20,23 @@ class AddBook extends React.Component {
   };
 
   handleSelect = e => {
-    let author = e.target.value;
-    this.setState({ author });
+    let authorId = e.target.value;
+    this.setState({ authorId });
   };
 
   handleFormSubmit = e => {
     e.preventDefault();
+    this.props.addBookMutation({
+      variables: {
+        name: this.state.name,
+        genre: this.state.genre,
+        authorId: this.state.authorId
+      }
+    });
   };
 
   render() {
-    let { authors, loading } = this.props.data;
+    let { authors, loading } = this.props.getAuthorsQuery;
     return (
       <section>
         <h2 className="title is-2"> Add New Book </h2>
@@ -63,8 +70,12 @@ class AddBook extends React.Component {
             <div className="control select">
               {!loading && (
                 <select onChange={this.handleSelect}>
+                  <option>Select author</option>
                   {authors.map(author => (
-                    <option key={author.id}> {author.name} </option>
+                    <option key={author.id} value={author.id}>
+                      {" "}
+                      {author.name}{" "}
+                    </option>
                   ))}
                 </select>
               )}
@@ -78,4 +89,7 @@ class AddBook extends React.Component {
   }
 }
 
-export default graphql(getAuthorsQuery)(AddBook);
+export default compose(
+  graphql(getAuthorsQuery, { name: "getAuthorsQuery" }),
+  graphql(addBookMutation, { name: "addBookMutation" })
+)(AddBook);
