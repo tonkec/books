@@ -22,8 +22,7 @@ class BookDetails extends React.Component {
               <ul>
                 {book.author.books.map(b => (
                   <li key={b.id}>
-                    {" "}
-                    {b.name}: {b.genre}
+                    {b.name} / {b.genre}
                   </li>
                 ))}
               </ul>
