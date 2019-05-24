@@ -1,5 +1,9 @@
 import React from "react";
-import { getAuthorsQuery, addBookMutation } from "./../queries/queries";
+import {
+  getAuthorsQuery,
+  getBooksQuery,
+  addBookMutation
+} from "./../queries/queries";
 import { graphql, compose } from "react-apollo";
 
 class AddBook extends React.Component {
@@ -31,7 +35,8 @@ class AddBook extends React.Component {
         name: this.state.name,
         genre: this.state.genre,
         authorId: this.state.authorId
-      }
+      },
+      refetchQueries: [{ query: getBooksQuery }]
     });
   };
 
@@ -73,8 +78,7 @@ class AddBook extends React.Component {
                   <option>Select author</option>
                   {authors.map(author => (
                     <option key={author.id} value={author.id}>
-                      {" "}
-                      {author.name}{" "}
+                      {author.name}
                     </option>
                   ))}
                 </select>
