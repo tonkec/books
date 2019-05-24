@@ -51,7 +51,7 @@ class AddBook extends React.Component {
             <div className="control">
               <input
                 type="text"
-                className="input"
+                className="input is-primary"
                 onChange={this.handleBookName}
                 placeholder="Book Name"
               />
@@ -63,7 +63,7 @@ class AddBook extends React.Component {
             <div className="control">
               <input
                 type="text"
-                className="input"
+                className="input is-primary"
                 onChange={this.handleGenre}
                 placeholder="Genre"
               />
@@ -72,10 +72,10 @@ class AddBook extends React.Component {
 
           <div className="field">
             <label className="label"> Author </label>
-            <div className="control select">
+            <div className="control select is-primary">
               {!loading && (
                 <select onChange={this.handleSelect}>
-                  <option>Select author</option>
+                  <option> Select author </option>
                   {authors.map(author => (
                     <option key={author.id} value={author.id}>
                       {author.name}
