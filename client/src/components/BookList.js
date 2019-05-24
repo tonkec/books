@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { getBooksQuery } from "./../queries/queries";
 import { graphql } from "react-apollo";
 
