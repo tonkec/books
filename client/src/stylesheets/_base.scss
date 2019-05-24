@@ -1,0 +1,11 @@
+.books-list {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 50px;
+  margin-bottom: 50px;
+}
+
+.title {
+  &.is-2 {
+    font-size: 2rem;
+  }
+}

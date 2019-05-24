@@ -6,8 +6,8 @@ const BookList = ({ data }) => {
   let { books, loading } = data;
 
   return (
-    <section>
-      <h2 className="title is-2"> List of your books </h2>
+    <section className="books-list">
+      <h2 className="title is-2"> List of books </h2>
       {!loading && (
         <div className="content">
           <ul id="book-list">
