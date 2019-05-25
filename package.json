@@ -17,9 +17,9 @@
     "express-graphql": "^0.8.0",
     "graphql": "^14.3.0",
     "lodash": "^4.17.11",
+    "mongoose": "^5.5.11",
     "nodemon": "^1.19.0",
-    "path": "^0.12.7",
-    "mongoose": "^5.5.11"
+    "path": "^0.12.7"
   },
   "devDependencies": {
     "husky": "^2.3.0",
