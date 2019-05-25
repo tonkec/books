@@ -13,10 +13,10 @@ const password = process.env.PASSWORD;
 const host = process.env.HOST;
 const port = process.env.PORT;
 const db = process.env.DB;
+const url = `mongodb://${user}:${password}@${host}.mlab.com:${port}/${db}`;
 app.use(cors());
-mongoose.connect(
-  `mongodb://${user}:${password}@${host}.mlab.com:${port}/${db}`
-);
+console.log(url);
+mongoose.connect(url);
 mongoose.connection.once("open", () => {
   console.log("connected to mongodb");
 });
