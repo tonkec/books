@@ -1,5 +1,4 @@
 .books-list {
-  border-bottom: 1px solid #ccc;
   padding-bottom: 50px;
   margin-bottom: 50px;
 }
@@ -30,4 +29,11 @@ li {
 
 .select.is-primary select {
   border: 0.5px solid #0a0a0a;
+}
+
+.header {
+  margin-bottom: 5rem;
+  a {
+    margin-right: 2rem;
+  }
 }
