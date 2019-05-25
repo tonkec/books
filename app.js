@@ -6,6 +6,8 @@ const mongoose = require("mongoose");
 dotenv.config();
 const cors = require("cors");
 const app = express();
+const path = require("path");
+
 const user = process.env.USER;
 const password = process.env.PASSWORD;
 const host = process.env.HOST;
@@ -26,6 +28,11 @@ app.use(
     graphiql: true
   })
 );
+
+app.use(express.static(path.join(__dirname, "client/build")));
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname + "/client/build/index.html"));
+});
 
 const serverPort = process.env.SERVERPORT || 4000;
 
