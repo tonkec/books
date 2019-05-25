@@ -8,8 +8,7 @@ class BookListItem extends React.Component {
   render() {
     return (
       <li onClick={this.handleClick}>
-        {" "}
-        <span>{this.props.book.name} </span>{" "}
+        <span>{this.props.book.name} </span>
       </li>
     );
   }
