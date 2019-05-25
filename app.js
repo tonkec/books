@@ -11,12 +11,13 @@ const path = require("path");
 const user = process.env.USER;
 const password = process.env.PASSWORD;
 const host = process.env.HOST;
-const port = process.env.PORT;
+const portDB = process.env.PORTDB;
 const db = process.env.DB;
-const url = `mongodb://${user}:${password}@${host}.mlab.com:${port}/${db}`;
+
+const url = `mongodb://${user}:${password}@${host}.mlab.com:${portDB}/${db}`;
 app.use(cors());
 console.log(url);
-mongoose.connect(url);
+mongoose.connect(url, { useNewUrlParser: true });
 mongoose.connection.once("open", () => {
   console.log("connected to mongodb");
 });
