@@ -4,13 +4,15 @@ import {
   getBooksQuery,
   addBookMutation
 } from "./../queries/queries";
+import SelectAuthors from "./SelectAuthors";
+import Content from "./Content";
 import { graphql, compose } from "react-apollo";
 
 class AddBook extends React.Component {
   state = {
     name: "",
     genre: "",
-    authorId: ""
+    authorId: this.props.authorId ? this.props.authorId : ""
   };
 
   handleBookName = e => {
@@ -38,10 +40,11 @@ class AddBook extends React.Component {
       },
       refetchQueries: [{ query: getBooksQuery }]
     });
+    this.props.history.push("/");
   };
 
   render() {
-    let { authors, loading } = this.props.getAuthorsQuery;
+    let { loading } = this.props.getAuthorsQuery;
     return (
       <section>
         <h2 className="title is-2"> Add New Book </h2>
@@ -72,20 +75,18 @@ class AddBook extends React.Component {
 
           <div className="field">
             <label className="label"> Author </label>
-            <div className="control select is-primary">
-              {!loading && (
-                <select onChange={this.handleSelect}>
-                  <option> Select author </option>
-                  {authors.map(author => (
-                    <option key={author.id} value={author.id}>
-                      {author.name}
-                    </option>
-                  ))}
-                </select>
-              )}
-            </div>
+            {!loading && (
+              <Content
+                content={this.props.getAuthorsQuery}
+                component={
+                  <SelectAuthors
+                    content={this.props.getAuthorsQuery}
+                    handle={this.handleSelect}
+                  />
+                }
+              />
+            )}
           </div>
-
           <button className="button is-black"> Add Book </button>
         </form>
       </section>
