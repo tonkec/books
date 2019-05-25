@@ -4,8 +4,14 @@ A project for querying books with GraphQL
 
 ## Setting up the stage
 
-1. `cd server && npm install`
-2. `cd client && npm install`
-3. run express server from server's directory `npm start`
-4. run development server from client's directory `npm start`
-5. Go to [localhost:3000](http://localhost:3000)
+1. `npm install && cd client && npm install`
+2. run express server from the root of directory `npm start`
+3. Go to [localhost:4000](http://localhost:4000)
+
+## Technologies used
+
+- [GraphQL](https://graphql.org/)
+- [React Apollo](https://www.apollographql.com/docs/react/)
+- [React](https://reactjs.org/) served with [express](https://expressjs.com/)
+- [MongoDB](https://www.mongodb.com/) with [mongoose](https://mongoosejs.com/)
+- [Bulma](https://bulma.io/) for styling
