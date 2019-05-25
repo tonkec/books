@@ -35,7 +35,7 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname + "/client/build/index.html"));
 });
 
-const serverPort = process.env.SERVERPORT || 4000;
+const serverPort = process.env.PORT || 4000;
 
 app.listen(serverPort, () => {
   console.log("listening");
