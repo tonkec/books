@@ -16,7 +16,6 @@ const db = process.env.DB;
 
 const url = `mongodb://${user}:${password}@${host}.mlab.com:${portDB}/${db}`;
 app.use(cors());
-console.log(url);
 mongoose.connect(url, { useNewUrlParser: true });
 mongoose.connection.once("open", () => {
   console.log("connected to mongodb");

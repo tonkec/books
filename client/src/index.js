@@ -10,8 +10,6 @@ const uri =
   process.env.NODE_ENV === "development"
     ? "http://localhost:4000/graphql"
     : "https://fierce-depths-86661.herokuapp.com/graphql";
-console.log(process.env.NODE_ENV);
-console.log(uri);
 
 const client = new ApolloClient({
   uri: uri
