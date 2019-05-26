@@ -6,8 +6,15 @@ import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
 import * as serviceWorker from "./serviceWorker";
 
+const uri =
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:4000/graphql"
+    : "https://fierce-depths-86661.herokuapp.com/graphql";
+console.log(process.env.NODE_ENV);
+console.log(uri);
+
 const client = new ApolloClient({
-  uri: "http://localhost:4000/graphql"
+  uri: uri
 });
 
 const jsx = (
